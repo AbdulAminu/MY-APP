@@ -24,3 +24,4 @@ app.listen(3000, () => {
   console.log("App is running at prot 3000");
 });
 }
+export default app
