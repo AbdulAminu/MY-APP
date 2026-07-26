@@ -1,4 +1,6 @@
 import express from "express";
+import { checkToken } from "../middleWare/authMiddleWare.js";
+import { isAdmin } from "../middleWare/isAdmin.js";
 import {
   addMovies,
   getAllMovies,
@@ -9,10 +11,10 @@ import {
 
 const router = express.Router();
 
-router.post("/movies", addMovies);
-router.get("/movies", getAllMovies);
-router.get("/movies/:id", getMovie);
-router.put("/movies/:id", updateMovie);
-router.delete("/movies/:id", deleteMovie);
+router.post("/add-movies",checkToken, isAdmin, addMovies);
+router.get("/allmovies",getAllMovies);
+router.get("/fetch-movie/:id", getMovie);
+router.put("/movie-update/:id",checkToken, isAdmin, updateMovie);
+router.delete("/delete-movies/:id", checkToken, isAdmin,deleteMovie);
 
 export default router;
