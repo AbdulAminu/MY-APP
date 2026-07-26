@@ -28,8 +28,6 @@ const movieSchema = new mongoose.Schema(
       required: true,
     },
 
-    trailer: String,
-
     movieUrl: {
       type: String,
       required: true,

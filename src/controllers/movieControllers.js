@@ -1,7 +1,20 @@
 import movieModels from "../models/movieModels.js";
 
 export const addMovies = async (req, res) => {
+    const {
+  title,
+  genre,
+  year,
+  duration,
+  rating,
+  description,
+}= req.body
   try {
+    if(!title || !genre || !year || !duration|| !rating || !description){
+        return res.status(400).json({
+            message:"Please fill in all required fields to continue. ⚠️"
+        })
+    }
     const movie = await movieModels.create(req.body);
     return res.status(201).json({
       message: "Movie added sucessfully",
@@ -9,7 +22,7 @@ export const addMovies = async (req, res) => {
     });
   } catch (err) {
     return res.status(500).json({
-      message: error.message,
+      message: err.message,
     });
   }
 };
@@ -25,7 +38,7 @@ export const getAllMovies = async (req, res) => {
     });
   } catch (err) {
     return res.status(500).json({
-      message: error.message,
+      message: err.message,
     });
   }
 };
@@ -40,7 +53,7 @@ export const getMovie = async (req, res) => {
     return res.status(200).json(movie);
   } catch (err) {
     return res.status(500).json({
-      message: error.message,
+      message: err.message,
     });
   }
 };
@@ -59,7 +72,7 @@ export const deleteMovie = async (req, res) => {
     });
   } catch (err) {
     return res.status(500).json({
-      message: error.message,
+      message: err.message,
     });
   }
 };
@@ -78,7 +91,7 @@ export const updateMovie = async (req, res) => {
     });
   } catch (err) {
     return res.status(500).json({
-      messgae: error.message,
+      messgae: err.message,
     });
   }
 };
