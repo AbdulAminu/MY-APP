@@ -1,6 +1,6 @@
-import movieModels from "../models/movieModels.js";
+import trailerModels from "../models/trailerModels.js";
 
-export const addMovies = async (req, res) => {
+export const addTrailer = async (req, res) => {
     const {
   title,
   genre,
@@ -15,9 +15,9 @@ export const addMovies = async (req, res) => {
             message:"Please fill in all required fields to continue. ⚠️"
         })
     }
-    const movie = await movieModels.create(req.body);
+    const movie = await trailerModels.create(req.body);
     return res.status(201).json({
-      message: "Movie added sucessfully",
+      message: "Trailer added sucessfully",
       data: movie,
     });
   } catch (err) {
@@ -27,12 +27,12 @@ export const addMovies = async (req, res) => {
   }
 };
 
-export const getAllMovies = async (req, res) => {
+export const getAllTrailers = async (req, res) => {
   try {
-    const movies = await movieModels.find();
+    const movies = await trailerModels.find();
 
     return res.status(200).json({
-      message: "Movies fetched succesfully",
+      message: "Trailers fetched succesfully",
       count: movies.length,
       data: movies,
     });
@@ -42,12 +42,12 @@ export const getAllMovies = async (req, res) => {
     });
   }
 };
-export const getMovie = async (req, res) => {
+export const getTrailer = async (req, res) => {
   try {
-    const movie = await movieModels.findById(req.params.id);
+    const movie = await trailerModels.findById(req.params.id);
     if (!movie) {
       return res.status(404).json({
-        message: "Movie requested cannot be found",
+        message: "Trailer requested cannot be found",
       });
     }
     return res.status(200).json(movie);
@@ -58,17 +58,17 @@ export const getMovie = async (req, res) => {
   }
 };
 
-export const deleteMovie = async (req, res) => {
+export const deleteTrailer = async (req, res) => {
   try {
-    const movie = await movieModels.findByIdAndDelete(req.params.id);
+    const movie = await trailerModels.findByIdAndDelete(req.params.id);
 
     if (!movie) {
       return res.status(404).json({
-        message: "Movie to be deleted cannot be found",
+        message: "Trailer to be deleted cannot be found",
       });
     }
     return res.status(200).json({
-      message: "Movie deleted succesfully",
+      message: "Trailer deleted succesfully",
     });
   } catch (err) {
     return res.status(500).json({
@@ -76,18 +76,18 @@ export const deleteMovie = async (req, res) => {
     });
   }
 };
-export const updateMovie = async (req, res) => {
+export const updateTrailer = async (req, res) => {
   try {
-    const movie = await movieModels.findByIdAndUpdate(req.params.id, req.body, {
+    const movie = await trailerModels.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
     if (!movie) {
       return res.status(404).json({
-        message: "movie to be updated cannot be found",
+        message: "Trailer to be updated cannot be found",
       });
     }
     return res.status(200).json({
-      message: "Movie Updated successfully",
+      message: "Trailer Updated successfully",
     });
   } catch (err) {
     return res.status(500).json({
