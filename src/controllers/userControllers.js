@@ -8,7 +8,7 @@ import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/tokenGen.js";
 
 export const Home = (req, res) => {
-  res.send("Hey yo i am the first page");
+  res.send("Home page");
 };
 
 export const signUp = async (req, res) => {
