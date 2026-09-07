@@ -2,7 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
-import trailerRoutes from "./routes/trailerRoutes.js"
+import wallpaperRoutes from "./routes/wallpaperRoutes.js"
 import dotenv from "dotenv";
 dotenv.config();
 import { dbConnect } from "./config/DBconnect.js";
@@ -19,7 +19,7 @@ app.use(cookieParser());
 await dbConnect();
 
 app.use("/api/users", userRoutes);
-app.use("/api/trailers", trailerRoutes);
+app.use("/api/wallpapers", wallpaperRoutes);
 
 if(process.env.NODE_ENV !=="production"){
 app.listen(3000, () => {
