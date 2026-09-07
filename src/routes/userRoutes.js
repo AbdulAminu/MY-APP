@@ -9,5 +9,8 @@ router.post("/login", login)
 router.get("/All-users", checkToken, getAllUsers)
 router.get("/user", checkToken, getSingleUser)
 router.delete("/Account-delete",checkToken, deleteAcct)
+router.get("/me", checkToken, async (req, res) => {
+  res.json(req.user);
+});
 
 export default router
