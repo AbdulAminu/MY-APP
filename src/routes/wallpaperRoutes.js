@@ -2,7 +2,7 @@ import express from "express";
 import { checkToken } from "../middleWare/authMiddleWare.js";
 import { isAdmin } from "../middleWare/isAdmin.js";
 import {addWallpaper, deleteWallpaper, getAllWallpapers, updateWallpaper, getWallpaper } from "../controllers/wallpaperControllers.js";
-import upload from "../middleWare/uploadMiddleware.js";
+import upload from "../middleWare/upload.js";
 const router = express.Router();
 
 router.post(
