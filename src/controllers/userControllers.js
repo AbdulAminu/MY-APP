@@ -98,7 +98,7 @@ export const login = async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
     return res.status(200).json({
-      message: `Welcome back, ${existingUser.username}! Login successful 🎉🚀`,
+      message: `Welcome, ${existingUser.username}! Login successful 🎉🚀`,
       data: {
         id: existingUser._id,
         username: existingUser.username,

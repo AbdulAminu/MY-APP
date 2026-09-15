@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const wallpaperSchema = new mongoose.Schema(
   {
     category: {
