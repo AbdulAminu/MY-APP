@@ -68,8 +68,26 @@ export const getAllWallpapers = async (req, res) => {
     });
   }
 };
+// GET WALLPAPERS BY CATEGORY
+export const getWallpapersByCategory = async (req, res) => {
+  try {
+    const { category } = req.params;
 
-// GET ONE WALLPAPER
+    const wallpapers = await wallpaperModels.find({ category });
+
+    return res.status(200).json({
+      message: `${category} wallpapers fetched successfully`,
+      count: wallpapers.length,
+      data: wallpapers,
+    });
+  } catch (err) {
+    console.error(err);
+
+    return res.status(500).json({
+      message: err.message,
+    });
+  }
+};
 export const getWallpaper = async (req, res) => {
   try {
     const wallpaper = await wallpaperModels.findById(req.params.id);
